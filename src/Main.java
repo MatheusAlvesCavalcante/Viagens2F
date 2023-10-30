@@ -1,26 +1,36 @@
 import javax.swing.*;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        // Classe Objeto = Construtor
-        Turista mochileiro = new Turista("Lindsay");
+        Turista mochileiro = new Turista("Supla");
         Turista mochileira = new Turista();
+
+        Scanner tcd = new Scanner(System.in);
+
+        String cpf = tcd.nextLine();
         // Definir forma de cada turista
-        mochileiro.setCpf(Validacao.cpf("123"));
-        mochileira.setNome("Namor");
-        mochileira.setCpf("456");
-        // Definir comportamento
+
+
+        if(Validacao.validaCPF(cpf)){
+            mochileiro.setCpf(cpf);
+            System.out.println("CPF valido");
+        }
+        else{
+            System.out.println("CPF Inválido!");
+        }
+        tcd.close();
+
+
+        mochileira.setCpf("450");
+        mochileira.setNome("finga");
+
         String retorno = mochileira.viajar();
-        JOptionPane.showMessageDialog(null,retorno);
-        // Atribuição dinâmica
-       String nome = JOptionPane.showInputDialog("Entre com o nome da pessoa Turista");
-    Turista pessoaTurista = new Turista(nome);
-    // Saída de dados - nome armazenado acima
-    System.out.println(pessoaTurista.getNome());
-    // Pedir cpf e mostrar
-        String cpf = JOptionPane.showInputDialog("Entre com o cpf da pessoa Turista");
-       // Adicionar cpf no objeto pessoaTurista
-        pessoaTurista.setCpf(cpf);
-        System.out.println(pessoaTurista.getCpf());
+
+
+
+        JOptionPane.showMessageDialog(null, retorno);
+
     }
+
 }
